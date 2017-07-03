@@ -1,7 +1,6 @@
 package com.sairajen.saibabamantra;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -22,13 +20,12 @@ import com.google.android.gms.ads.MobileAds;
 public class MediaPlayerActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Toolbar toolbar;
-    private ImageView playPauseButton, stopButton, imageView;
+    private ImageView playPauseButton, stopButton;
     private TextView txtCount;
     private AdView adView;
 
     private InterstitialAd interstitialAd;
 
-    private Bitmap bitmap;
     private MediaPlayer mp;
 
     private int count = 0;
@@ -46,12 +43,9 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
 
         MobileAds.initialize(getApplicationContext(),getResources().getString(R.string.banner_ad));
         adView = (AdView) findViewById(R.id.adViewMediaPlayerActivity);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice(Device.getId(MediaPlayerActivity.this)).build();
+        AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
         prepareInterstitialAds();
-
-        bitmap = MainActivity.bitmap;
-        imageView.setImageBitmap(bitmap);
 
         if (getIntent().hasExtra(INTENT_COUNT)) {
             maxCount = getIntent().getExtras().getInt(INTENT_COUNT);
@@ -90,7 +84,7 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
     private void prepareInterstitialAds() {
         interstitialAd = new InterstitialAd(this);
         interstitialAd.setAdUnitId(getString(R.string.interstitial_ad));
-        AdRequest adRequest2 = new AdRequest.Builder().addTestDevice(Device.getId(MediaPlayerActivity.this)).build();
+        AdRequest adRequest2 = new AdRequest.Builder().build();
         interstitialAd.loadAd(adRequest2);
     }
 
@@ -111,7 +105,6 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void initViews() {
-        imageView = (ImageView) findViewById(R.id.media_player_imageView);
         playPauseButton = (ImageView) findViewById(R.id.playPauseBtn);
         stopButton = (ImageView) findViewById(R.id.stopBtn);
         txtCount = (TextView) findViewById(R.id.txtCount);

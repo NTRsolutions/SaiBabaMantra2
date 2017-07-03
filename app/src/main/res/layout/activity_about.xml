@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/deep_orange"
+    android:background="@color/colorPrimaryDark"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.sairajen.saibabamantra.About">
@@ -30,14 +30,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:layout_gravity="center"
                 android:text="Version 1.0"
                 android:layout_margin="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:text="Long message:"
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:text="Welcom Shirdi Saibaba Devotees,"
@@ -53,14 +53,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:text="Every one is looking for something in life, whether it is a new job, new house, good fortune etc. But sometimes we fail to achieve what we want. This happens because of the misfortunes that we carry in our life. We try hard but still not able to achieve what we want. Mantras have the ability to erase all those misfortunes so that you can reconquer your happy moments, which were missing from your lives."
                 android:layout_marginTop="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:text="Sai mantras to give new direction to your life :"
@@ -68,28 +68,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:text="Shirdi Saibaba mantras can take your life to a new direction by eradicating all the miseries you were facing in your life. Here are some most powerful Shiridi Saibaba mantra according to the problems you face in life."
                 android:layout_marginTop="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:text="Chant or hear Shirdi Sai baba mantras 108 times and do abhishekam to sai babas idol with cow’s milk for 51 days. you can take that milk as prasad. Feed to 9 poor people for consecutive 9 Thursday’s."
                 android:layout_marginTop="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:text="Chanting is also like meditation, Saibaba chants creates a vibration in our body and mind. It creates in us a divine energy . For shirdi saibaba devotees we have baba's wonderful assurance that all we have to do is to say, if you Chant saibaba mantras our previous births bad karma will be washed away and sai will bless us with the rewards of out devotion."
                 android:layout_marginTop="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:text="Benefits of Shirdi Sai baba chanting mantras:"
@@ -97,14 +97,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:text="For progeny , marital bliss , getting married, avoid untimely death , boosts immunity etc..."
                 android:layout_marginTop="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:text="Please chant saibaba mantras without expectations, with total devotion and love on our sweet shirdi saibaba. Make it as a habit. One day sai is surely going to bless you with a peace and prosperity."
                 android:layout_marginTop="6dp"
@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content" />
             <TextView
                 android:id="@+id/textWebLink"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:text="For more Details click : www.saihere.com"
@@ -120,7 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:text="Om sairam"

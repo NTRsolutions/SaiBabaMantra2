@@ -11,148 +11,89 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-    <ScrollView
+    <ImageView
         android:layout_below="@+id/toolbar"
-        android:layout_above="@+id/adViewMainActivity"
+        android:background="@drawable/background"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <LinearLayout
+        android:background="#1A237E"
+        android:alpha="0.9"
+        android:layout_above="@+id/adViewMainActivity"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:id="@+id/ll1"
-                android:background="@color/white"
-                android:gravity="center"
-                android:padding="20dp"
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+        <TextView
+            android:textStyle="bold"
+            android:text="Mantra Counts"
+            android:textSize="14sp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:layout_margin="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-                <TextView
-                    android:text="Selct God"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/editText"
+            android:inputType="number"
+            android:imeOptions="actionDone"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:background="@drawable/rounded_corner_white"
+            android:padding="4dp"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
 
-                <ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/sai1"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp" />
+        <Button
+            android:text="Start Chant"
+            android:id="@+id/startChantBtn"
+            android:background="@drawable/btn"
+            android:textAllCaps="false"
+            android:layout_margin="6dp"
+            android:paddingRight="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:paddingLeft="16dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/sai2"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp" />
+        <TextView
+            android:id="@+id/readMoreTextView"
+            android:textStyle="bold"
+            android:text="More about Sai mantra"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/sai3"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp" />
+        <TextView
+            android:text="Chanting Sai baba mantra on Every Thursday and during Guru Purnima day are very auspicious days"
+            android:textSize="14sp"
+            android:layout_gravity="center"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-                <Button
-                    android:background="@drawable/rounded_corner_bg"
-                    android:paddingStart="6dp"
-                    android:paddingLeft="6dp"
-                    android:paddingEnd="6dp"
-                    android:paddingRight="6dp"
-                    android:textColor="@color/white"
-                    android:id="@+id/openGalleryBtn"
-                    android:textAllCaps="false"
-                    android:text="Open Gallery"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:padding="20dp"
-                android:layout_toEndOf="@id/ll1"
-                android:layout_toRightOf="@id/ll1"
-                android:background="@color/deep_orange"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    tools:background="@drawable/sai1"
-                    android:layout_marginBottom="20dp"
-                    android:id="@+id/mainImageView"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp" />
-
-                <TextView
-                    android:textStyle="bold"
-                    android:text="Sai Baba Mantra"
-                    android:textSize="16sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:textStyle="bold"
-                    android:text="Counts"
-                    android:textSize="16sp"
-                    android:layout_marginTop="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <EditText
-                    android:id="@+id/editText"
-                    android:layout_marginTop="10dp"
-                    android:inputType="number"
-                    android:imeOptions="actionDone"
-                    android:background="@drawable/rounded_corner_white"
-                    android:padding="12dp"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content" />
-
-                <Button
-                    android:text="Start Chant"
-                    android:id="@+id/startChantBtn"
-                    android:textAllCaps="false"
-                    android:layout_marginTop="25dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:textStyle="bold"
-                    android:text="Chanting Shirdi Saibaba mantra on Every Thursday are auspicious days"
-                    android:textSize="16sp"
-                    android:layout_marginTop="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/readMoreTextView"
-                    android:textStyle="bold"
-                    android:text="Read More..."
-                    android:textSize="16sp"
-                    android:layout_marginTop="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-        </RelativeLayout>
-
-    </ScrollView>
+    </LinearLayout>
 
     <com.google.android.gms.ads.AdView
-        android:layout_alignParentBottom="true"
         android:id="@+id/adViewMainActivity"
         ads:adSize="SMART_BANNER"
         ads:adUnitId="@string/banner_ad"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
     </com.google.android.gms.ads.AdView>
 

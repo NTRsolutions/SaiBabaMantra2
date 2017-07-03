@@ -24,7 +24,7 @@ public class About extends AppCompatActivity {
 
         MobileAds.initialize(getApplicationContext(),getResources().getString(R.string.banner_ad));
         adView = (AdView) findViewById(R.id.adViewAboutActivity);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice(Device.getId(About.this)).build();
+        AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
 
         ((TextView) findViewById(R.id.textWebLink)).setOnClickListener(new View.OnClickListener() {

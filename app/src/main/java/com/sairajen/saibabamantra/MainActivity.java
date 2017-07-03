@@ -1,12 +1,9 @@
 package com.sairajen.saibabamantra;
 
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -17,33 +14,26 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
-import java.io.File;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Toolbar toolbar;
-    private Button openGalleryBtn, startChantBtn;
-    private ImageView imageView1, imageView2, imageView3, mainImageView;
+    private Button startChantBtn;
     private EditText editText;
     private TextView readMoreTxt;
     private AdView adView;
 
-    public static Bitmap bitmap;
-
-    private String picturePath;
     private int count = 0;
 
-    private final static int GALLERY_ACTIVITY_CODE = 200;
-    private final static int RESULT_CROP = 201;
-
     private final static String INTENT_COUNT = "count";
+
+    private SharedPref sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,18 +43,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initViews();
 
+        sharedPref = new SharedPref(MainActivity.this);
+        if (sharedPref.isFirstTime()) {
+            sharedPref.setFirstTime(false);
+            setNotification();
+        }
+
         MobileAds.initialize(getApplicationContext(),getResources().getString(R.string.banner_ad));
         adView = (AdView) findViewById(R.id.adViewMainActivity);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice(Device.getId(MainActivity.this)).build();
+        AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
 
-        bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.sai1);
-        mainImageView.setImageBitmap(bitmap);
-
-        openGalleryBtn.setOnClickListener(this);
-        imageView1.setOnClickListener(this);
-        imageView2.setOnClickListener(this);
-        imageView3.setOnClickListener(this);
         startChantBtn.setOnClickListener(this);
         readMoreTxt.setOnClickListener(this);
 
@@ -96,12 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initViews() {
-        openGalleryBtn = (Button) findViewById(R.id.openGalleryBtn);
         startChantBtn = (Button) findViewById(R.id.startChantBtn);
-        mainImageView = (ImageView) findViewById(R.id.mainImageView);
-        imageView1 = (ImageView) findViewById(R.id.imageView1);
-        imageView2 = (ImageView) findViewById(R.id.imageView2);
-        imageView3 = (ImageView) findViewById(R.id.imageView3);
         editText = (EditText) findViewById(R.id.editText);
         readMoreTxt = (TextView) findViewById(R.id.readMoreTextView);
 
@@ -117,66 +101,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.openGalleryBtn:
-                Intent i = new Intent(MainActivity.this,GalleryUtil.class);
-                startActivityForResult(i,GALLERY_ACTIVITY_CODE);
-                break;
-            case R.id.imageView1:
-                mainImageView.setImageDrawable(getResources().getDrawable(R.drawable.sai1));
-                bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sai1);
-                break;
-            case R.id.imageView2:
-                mainImageView.setImageDrawable(getResources().getDrawable(R.drawable.sai2));
-                bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sai2);
-                break;
-            case R.id.imageView3:
-                mainImageView.setImageDrawable(getResources().getDrawable(R.drawable.sai3));
-                bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sai3);
-                break;
             case R.id.startChantBtn:
                 startChant();
                 break;
             case R.id.readMoreTextView:
                 startActivity(new Intent(MainActivity.this,About.class));
                 break;
-        }
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == GALLERY_ACTIVITY_CODE) {
-            if (resultCode == Activity.RESULT_OK) {
-                picturePath = data.getStringExtra("picturePath");
-                performCrop(picturePath);
-            }
-        }
-    }
-
-    private void performCrop(String picUri) {
-        try{
-            Intent cropIntent = new Intent("com.android.camera.action.CROP");
-            File f = new File(picUri);
-            Uri contentUri = Uri.fromFile(f);
-
-            cropIntent.setDataAndType(contentUri, "image/*");
-
-            //set crop properties
-            cropIntent.putExtra("crop","true");
-            cropIntent.putExtra("aspectX",1);
-            cropIntent.putExtra("aspectY",1);
-            cropIntent.putExtra("outputX",280);
-            cropIntent.putExtra("outputY",280);
-
-            cropIntent.putExtra("return-data",true);
-
-            startActivityForResult(cropIntent,RESULT_CROP);
-
-        } catch (ActivityNotFoundException e) {
-            e.printStackTrace();
-            Helper.showDialog(MainActivity.this,"ERROR","Your device does not support crop feature"
-            , "OK",android.R.drawable.stat_sys_warning);
         }
     }
 
@@ -215,7 +145,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             adView.resume();
         }
         super.onResume();
-        picturePath = "";
         count = 0;
     }
 
@@ -226,4 +155,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             adView.destroy();
         }
     }
+
+    private void setNotification() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY,6);
+        calendar.set(Calendar.MINUTE,30);
+
+        Intent intent = new Intent(getApplicationContext(),NotificationReceiver.class);
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(),100,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+    }
+
 }
