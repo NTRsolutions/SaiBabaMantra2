@@ -39,8 +39,13 @@ public class About extends AppCompatActivity {
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitleTextColor(Color.WHITE);
-        About.this.setTitle("About");
+        About.this.setTitle("");
+        toolbar.findViewById(R.id.toolbar_title).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Helper.openLink(About.this,"http://www.saihere.com/more-app.html");
+            }
+        });
     }
 
     @Override

@@ -94,8 +94,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitleTextColor(Color.WHITE);
-        MainActivity.this.setTitle("Sai Mantra");
+        MainActivity.this.setTitle("");
+        toolbar.findViewById(R.id.toolbar_title).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Helper.openLink(MainActivity.this,"http://www.saihere.com/more-app.html");
+            }
+        });
     }
 
     @Override
@@ -121,9 +126,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (item.getItemId()) {
             case R.id.menu_share:
                 Helper.shareApp(MainActivity.this);
-                break;
-            case R.id.menu_more_app:
-                Helper.openLink(MainActivity.this,"http://www.saihere.com/more-app.html");
                 break;
             case R.id.menu_about_us:
                 startActivity(new Intent(MainActivity.this,About.class));

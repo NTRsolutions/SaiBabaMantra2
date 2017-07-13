@@ -7,12 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.sairajen.saibabamantra.MediaPlayerActivity">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
-
     <ImageView
-        android:layout_below="@+id/toolbar"
         android:background="@drawable/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
@@ -79,5 +74,9 @@
         android:layout_height="wrap_content">
 
     </com.google.android.gms.ads.AdView>
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 
 </RelativeLayout>

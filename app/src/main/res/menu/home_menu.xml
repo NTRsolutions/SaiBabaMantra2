@@ -16,10 +16,4 @@
         android:orderInCategory="101"
         app:showAsAction="always" />
 
-    <item
-        android:id="@+id/menu_more_app"
-        android:title="More Apps"
-        android:orderInCategory="102"
-        app:showAsAction="never" />
-
 </menu>

@@ -113,8 +113,13 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitleTextColor(Color.WHITE);
-        MediaPlayerActivity.this.setTitle("Sai Mantra");
+        MediaPlayerActivity.this.setTitle("");
+        toolbar.findViewById(R.id.toolbar_title).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Helper.openLink(MediaPlayerActivity.this,"http://www.saihere.com/more-app.html");
+            }
+        });
     }
 
     @Override
@@ -148,9 +153,6 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
         switch (item.getItemId()) {
             case R.id.menu_share:
                 Helper.shareApp(MediaPlayerActivity.this);
-                break;
-            case R.id.menu_more_app:
-                Helper.openLink(MediaPlayerActivity.this,"http://www.saihere.com/more-app.html");
                 break;
             case R.id.menu_about_us:
                 startActivity(new Intent(MediaPlayerActivity.this,About.class));
