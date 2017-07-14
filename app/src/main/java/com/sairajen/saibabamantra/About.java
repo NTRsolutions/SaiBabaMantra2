@@ -13,14 +13,12 @@ import com.google.android.gms.ads.MobileAds;
 
 public class About extends AppCompatActivity {
 
-    private Toolbar toolbar;
     private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        initToolbar();
 
         MobileAds.initialize(getApplicationContext(),getResources().getString(R.string.banner_ad));
         adView = (AdView) findViewById(R.id.adViewAboutActivity);
@@ -34,18 +32,6 @@ public class About extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void initToolbar() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        About.this.setTitle("");
-        toolbar.findViewById(R.id.toolbar_title).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Helper.openLink(About.this,"http://www.saihere.com/more-app.html");
-            }
-        });
     }
 
     @Override
